@@ -5,7 +5,7 @@
             </header>
             <div class="content">
                 <h1 class="main-title">THE ULTIMATE COLLECTION OF FREE PSD TEMPLATES!!</h1>
-                <a href="#" class="cta-button">Download</a>
+                <a href="#" class="cta-button"><?php echo \Yii::t('text', 'Download');?></a>
             </div>
         </div>
     </div>

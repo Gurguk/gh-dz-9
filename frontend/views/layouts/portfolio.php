@@ -6,11 +6,12 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 //use frontend\assets\CssAsset;
-use frontend\widgets\Alert;
+use common\components\languageSwitcher;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 AppAsset::register($this);
+
 //CssAsset::register($this);
 
 ?>
@@ -36,22 +37,25 @@ AppAsset::register($this);
                     ],
                 ]);
                 $menuItems = [
-                    ['label' => 'Home', 'url' => ['/#hero']],
-                    ['label' => 'About us', 'url' => ['/#about']],
-                    ['label' => 'Portfolio', 'url' => ['/#portfolio']],
-                    ['label' => 'Services', 'url' => ['/#services']],
-                    ['label' => 'Contuct Us', 'url' => ['/#contact']],
+                    ['label' => \Yii::t('text','Home'), 'url' => ['/#hero']],
+                    ['label' => \Yii::t('text','About us'), 'url' => ['/#about']],
+                    ['label' => \Yii::t('text','Portfolio'), 'url' => ['/#portfolio']],
+                    ['label' => \Yii::t('text','Services'), 'url' => ['/#services']],
+                    ['label' => \Yii::t('text','Contuct Us'), 'url' => ['/#contact']],
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right navigation menu'],
                     'items' => $menuItems,
                 ]);
                 NavBar::end();
-    ?>
 
+    ?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ])  ?>
+        <div style="position: fixed; top: 8px; left: 10px; z-index: 9999;">
+            <?= languageSwitcher::Widget() ?>
+        </div>
         <?= $content ?>
 
 </div>

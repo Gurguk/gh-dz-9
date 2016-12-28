@@ -3,12 +3,20 @@ namespace common\models;
 
 use yii\db\ActiveRecord;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Console;
+use Yii;
+/**
+ * Portfolio
+ * @property integer $id
+ * @property string $title
+ * @property string $description
+ * @property string $image
+ * @property string $url
+ */
 
 class Portfolio extends ActiveRecord
 {
-    /**
-     * Portfolio
-     */
+
     public static function tableName()
     {
         return 'portfolio';
@@ -39,5 +47,31 @@ class Portfolio extends ActiveRecord
             ->andFilterWhere(['like', 'url', $this->url]);
 
         return $dataProvider;
+    }
+
+    public function addDemo()
+    {
+        $postModel = new Portfolio();
+        Console::startProgress(0,100);
+        $i = 1;
+        while($i<=100){
+            $rows = [];
+            $j=1;
+            while($j<=10){
+                $rows[] = [
+                    'id',
+                    'title' => 'Title ' . $i . '-' . $j,
+                    'description' => 'Description ' . $i . '-' . $j,
+                    'image' => 'Image' . $i . '-' . $j,
+                    'url' => 'Url ' . $i . '-' . $j
+                ];
+                $j++;
+            }
+            Yii::$app->db->createCommand()->batchInsert(Portfolio::tableName(), $postModel->attributes(), $rows)->execute();
+            Console::updateProgress($i,100);
+            $i++;
+        }
+        Console::endProgress("end".PHP_EOL);
+
     }
 }

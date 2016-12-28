@@ -69,6 +69,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new ContactForm();
+        if(Yii::$app->request->get('lang')=='ru-RU')
+            Yii::$app->language = 'ru-RU';
         return $this->render('index',[
             'model' => $model,
         ]);

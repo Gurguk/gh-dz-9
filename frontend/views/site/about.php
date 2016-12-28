@@ -1,7 +1,7 @@
 <section id="about" class="about">
     <div class="wrapper">
         <div class="content">
-            <h2 class="section-title">About Us</h2>
+            <h2 class="section-title"><?php echo \Yii::t('text','About us')?></h2>
             <p class="section-description">Lorem ipsum dolor sit amet tetuer adipiscing elit,
                 sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
             <article>
@@ -18,7 +18,7 @@
                         nonummy euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                         Ut wisi enim minim veniam, quis nostrud exerci tation ullamcorper suscipit
                         lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                    <a href="#" class="button">Get Started</a>
+                    <a href="#" class="button"><?php echo \Yii::t('text','Get Started')?></a>
                 </div>
             </article>
         </div>

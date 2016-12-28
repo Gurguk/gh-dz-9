@@ -15,7 +15,7 @@ use yii\captcha\Captcha;
 
 <section id="contact" class="contact">
     <div class="wrapper">
-        <h2 class="section-title">Contact Us</h2>
+        <h2 class="section-title"><?php echo \Yii::t('text','Contuct Us')?></h2>
         <p class="section-description">Lorem ipsum dolor sit amet tetuer adipiscing elit,
             sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
         <div class="content">

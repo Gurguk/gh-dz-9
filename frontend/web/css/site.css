@@ -103,6 +103,7 @@ a.desc:after {
     margin: 0;
     font-size: 30px;
     line-height: 30px;
+    margin-left:50px;
 }
 
 .logo {
