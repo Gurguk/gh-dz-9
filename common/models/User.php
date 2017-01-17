@@ -12,6 +12,8 @@ use yii\web\IdentityInterface;
  *
  * @property integer $id
  * @property string $username
+ * @property string $firstname
+ * @property string $lastname
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -25,6 +27,10 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const ROLE_ADMIN = 'admin';
+    const ROLE_MANAGER = 'manager';
+    const PERMISION_CREATE_PORTFOLIO = 'createPortfolio';
+    const PERMISION_UPDATE_PORTFOLIO = 'updatePortfolio';
 
 
     /**
