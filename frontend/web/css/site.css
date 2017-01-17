@@ -7,7 +7,7 @@ body {
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
-    padding: 0 0 60px;
+    padding: 51px 0 60px;
 }
 
 .wrap > .container {
@@ -102,8 +102,8 @@ a.desc:after {
     font-weight: 700;
     margin: 0;
     font-size: 30px;
-    line-height: 30px;
-    margin-left:50px;
+    line-height: 40px;
+    margin-left:100px;
 }
 
 .logo {

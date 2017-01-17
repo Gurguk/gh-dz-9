@@ -12,5 +12,5 @@
 </section>
 <?php echo \Yii::$app->view->renderFile('@app/views/site/about.php'); ?>
 <?php echo \Yii::$app->view->renderFile('@app/views/site/portfolio.php'); ?>
-<?php echo \Yii::$app->view->renderFile('@app/views/site/services.php'); ?>
-<?php echo \Yii::$app->view->renderFile('@app/views/site/contact.php',['model'=>$model]); ?>
+<?php //echo \Yii::$app->view->renderFile('@app/views/site/services.php'); ?>
+<?php //echo \Yii::$app->view->renderFile('@app/views/site/contact.php',['model'=>$model]); ?>

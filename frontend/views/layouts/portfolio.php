@@ -30,18 +30,32 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
                 NavBar::begin([
-                    'brandLabel' => 'UIBrushspan',
+                    'brandLabel' => 'UIBrush',
                     'brandUrl' => Yii::$app->homeUrl,
                     'options' => [
                         'class' => 'navbar-inverse navbar-fixed-top navbar-logo',
                     ],
                 ]);
+                $logout = '';
+                $login = '';
+                $signup = '';
+                $user = '';
+                if (!\Yii::$app->user->isGuest) {
+                    $logout = ['label' => \Yii::t('text','Logout'), 'url' => ['/site/logout']];
+                    $user = ['label' => \Yii::t('text','User'), 'url' => ['/site/usersection']];
+                }
+                else
+                {
+                    $login = ['label' => \Yii::t('text','Login'), 'url' => ['/site/login']];
+                    $signup = ['label' => \Yii::t('text','Sign up'), 'url' => ['/site/signup']];
+                }
                 $menuItems = [
                     ['label' => \Yii::t('text','Home'), 'url' => ['/#hero']],
                     ['label' => \Yii::t('text','About us'), 'url' => ['/#about']],
                     ['label' => \Yii::t('text','Portfolio'), 'url' => ['/#portfolio']],
-                    ['label' => \Yii::t('text','Services'), 'url' => ['/#services']],
-                    ['label' => \Yii::t('text','Contuct Us'), 'url' => ['/#contact']],
+//                    ['label' => \Yii::t('text','Services'), 'url' => ['/#services']],
+                    $user, $login, $signup, $logout,
+//                    ['label' => \Yii::t('text','Contuct Us'), 'url' => ['/#contact']],
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right navigation menu'],

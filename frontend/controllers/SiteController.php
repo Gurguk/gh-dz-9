@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Portfolio;
+use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -27,7 +28,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup', 'usersection'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -35,7 +36,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'usersection'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -44,7 +45,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -173,5 +174,13 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUsersection()
+    {
+        $user_information['firstname'] = \Yii::$app->user->identity->firstname;
+        $user_information['lastname'] = \Yii::$app->user->identity->lastname;
+
+        return $this->render('userinfo', ['user_information' => $user_information]);
     }
 }

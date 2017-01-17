@@ -6,6 +6,8 @@ use Yii;
 use yii\web\Controller;
 use common\models\Portfolio;
 use yii\web\UploadedFile;
+use common\models\User;
+use yii\base\InvalidParamException;
 
 class PortfolioController extends Controller
 {
@@ -27,6 +29,10 @@ class PortfolioController extends Controller
      */
     public function actionCreate()
     {
+        if (!\Yii::$app->user->can(User::PERMISION_CREATE_PORTFOLIO)) {
+            Yii::$app->getSession()->setFlash('error', "You haven't permission for this action");
+            return $this->redirect(['index']);
+        }
         $model = new Portfolio();
 
         if (Yii::$app->request->isPost) {
